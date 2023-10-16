@@ -13,8 +13,9 @@ export const Auth = () => {
     }
   }, [isLoggedIn]);
 
-  const handleLogin = (username: string) => {
-    authenticate(username);
+  const handleLogin = () => {
+    if (!text) return;
+    authenticate(text);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +26,7 @@ export const Auth = () => {
     <>
       <div className="flex-col">
         <input type="text" placeholder="Введите имя" value={text} className="border p-2" onChange={handleChange} />
-        <button disabled={!text} onClick={() => handleLogin(text)}>
+        <button disabled={!text} onClick={handleLogin}>
           login
         </button>
       </div>

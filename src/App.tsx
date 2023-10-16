@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ReactNode, useContext } from 'react';
-import { AuthContext } from './context/AuthContext.tsx';
-import { Auth, NotFound, Table } from './pages';
+import { AuthContext } from '@/context/AuthContext.tsx';
+import { Auth, NotFound, Table } from '@/pages';
 
 const ProtectedAuthRoute = ({ isLoggedIn, children }: { isLoggedIn: boolean; children: ReactNode }): ReactNode => {
   const location = useLocation();
@@ -15,6 +15,7 @@ const ProtectedAuthRoute = ({ isLoggedIn, children }: { isLoggedIn: boolean; chi
 
 export const App = () => {
   const { isLoggedIn, userName } = useContext(AuthContext);
+
   return (
     <>
       <Routes>
@@ -22,7 +23,7 @@ export const App = () => {
           path={'/'}
           element={
             <ProtectedAuthRoute isLoggedIn={isLoggedIn}>
-              <Table user={userName} />
+              <Table userName={userName} />
             </ProtectedAuthRoute>
           }
         />

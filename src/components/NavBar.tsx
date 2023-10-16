@@ -1,4 +1,6 @@
-export const NavBar = ({ user }: { user: string }) => {
+import { UserType } from '@/types';
+
+export const NavBar = ({ userName }: UserType) => {
   return (
     <>
       <nav className="backdrop-brightness-75">
@@ -9,7 +11,7 @@ export const NavBar = ({ user }: { user: string }) => {
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <div className="relative ml-3">
-                <div className="text-gray-300 rounded-md px-3 py-2 text-xl font-medium">{user}</div>
+                <div className="text-gray-300 rounded-md px-3 py-2 text-xl font-medium">{userName}</div>
               </div>
             </div>
           </div>

@@ -1,11 +1,12 @@
-import { NavBar } from '../../components/NavBar.tsx';
+import { NavBar } from '@/components';
+import { UserType } from '@/types';
 
-export const Table = ({ user }: { user: string }) => {
+export const Table = ({ userName }: UserType) => {
   return (
     <>
       <div className="bg-amber-500">
-        <NavBar user={user} />
-        <div>Table Component with {user}</div>
+        <NavBar userName={userName} />
+        <div>Table Component with {userName}</div>
       </div>
     </>
   );

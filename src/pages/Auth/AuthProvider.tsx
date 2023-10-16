@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '@/context/AuthContext';
 
 type AuthType = {
   isLoggedIn: boolean;

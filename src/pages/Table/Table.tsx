@@ -1,8 +1,9 @@
 import { NavBar, TodoItem } from '@/components';
-import { TodoType, UserType } from '@/types';
-import { useEffect, useState } from 'react';
+import { TodoType } from '@/types';
+import { useContext, useEffect, useState } from 'react';
 import { z } from 'zod';
 import axios from 'axios';
+import { AuthContext } from '@/context';
 
 const todoSchema = z.object({
   completed: z.boolean(),
@@ -13,8 +14,13 @@ const todoSchema = z.object({
 
 // Now add this object into an array
 const todosSchema = z.array(todoSchema);
-export const Table = ({ userName }: UserType) => {
+
+
+
+export const Table = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
+  const { userName } = useContext(AuthContext);
+
 
   useEffect(() => {
     getTodos();

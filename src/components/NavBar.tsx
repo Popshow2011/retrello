@@ -1,6 +1,36 @@
-import { UserType } from '@/types';
+import { useContext, useState } from 'react';
+import { AuthContext } from '@/context';
+import { useNavigate } from 'react-router-dom';
+import { CreateTableItem } from '@/pages';
 
-export const NavBar = ({ userName }: UserType) => {
+type PropsType = {
+  userName: string;
+  addColumn: (name: string) => void;
+};
+
+export const NavBar = ({ userName, addColumn }: PropsType) => {
+  const { signout } = useContext(AuthContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleExit = () => {
+    signout();
+  };
+
+  const createNewColumn = () => {
+    openModal();
+    return navigate('/new_column');
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <nav className="backdrop-brightness-75">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

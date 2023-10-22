@@ -7,3 +7,8 @@ export type TodoType = {
   title: string;
   userId: number;
 };
+
+export type TableItemType = {
+  id: number;
+  name: string;
+};

@@ -1,6 +1,7 @@
 import { NavBar } from '@/components';
 import { useContext } from 'react';
 import { AuthContext } from '@/context';
+import { TableItem } from '@/pages';
 
 export const Table = () => {
   const { userName } = useContext(AuthContext);

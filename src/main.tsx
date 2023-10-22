@@ -1,6 +1,6 @@
 import '@/index.css';
 
-import { StrictMode } from 'react';
+import { ReactNode, StrictMode, useContext, FC } from 'react';
 import ReactDOM from 'react-dom/client';
 import { AuthProvider } from '@/pages/Auth/AuthProvider.tsx';
 import { router } from '@/routes';

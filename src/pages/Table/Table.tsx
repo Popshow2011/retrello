@@ -1,7 +1,10 @@
 import { NavBar } from '@/components';
-import { UserType } from '@/types';
+import { useContext } from 'react';
+import { AuthContext } from '@/context';
 
-export const Table = ({ userName }: UserType) => {
+export const Table = () => {
+  const { userName } = useContext(AuthContext);
+
   return (
     <>
       <div className="bg-amber-500">

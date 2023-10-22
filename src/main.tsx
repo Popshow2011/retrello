@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client';
 import { AuthProvider } from '@/pages/Auth/AuthProvider.tsx';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
-import { Auth, NotFound, Table } from '@/pages';
+import { Auth, NotFound, Table, CreateTableItem } from '@/pages';
 import { AuthContext } from '@/context';
 
 const isAuthenticated = () => {
@@ -25,6 +25,12 @@ const router = createBrowserRouter([
         <Table />
       </PrivateRoute>
     ),
+    children: [
+      {
+        path: '/new_column',
+        element: <CreateTableItem onClose={() => {}} />,
+      },
+    ],
   },
   {
     path: '*',

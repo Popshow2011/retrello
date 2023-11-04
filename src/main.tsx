@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/new_column',
-        element: <CreateTableItem onClose={() => {}} />,
+        element: <CreateTableItem />,
       },
     ],
   },

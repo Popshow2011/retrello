@@ -7,10 +7,8 @@ type PropsType = {
 export const TodoItem = ({ todo }: PropsType) => {
   return (
     <>
-      <div className="flex-col w-32 bg-amber-50 p-5 select-none">
-        <div className="text-center mb-4 font-bold">id: {todo.id}</div>
-        <div className="text-center">{todo.title}</div>
-        <div className="text-1xl text-center">{todo.completed}</div>
+      <div className="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
+        {todo.title}
       </div>
     </>
   );

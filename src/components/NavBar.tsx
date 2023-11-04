@@ -1,34 +1,20 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '@/context';
 import { useNavigate } from 'react-router-dom';
-import { CreateTableItem } from '@/pages';
 
 type PropsType = {
   userName: string;
-  addColumn: (name: string) => void;
 };
 
-export const NavBar = ({ userName, addColumn }: PropsType) => {
+export const NavBar = ({ userName }: PropsType) => {
   const { signout } = useContext(AuthContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
-
-  const handleExit = () => {
-    signout();
-  };
-
   const createNewColumn = () => {
-    openModal();
     return navigate('/new_column');
   };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleExit = () => {
+    signout();
   };
 
   return (

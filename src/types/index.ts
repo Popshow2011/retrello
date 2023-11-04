@@ -6,6 +6,7 @@ export type TodoType = {
   id: number;
   title: string;
   userId: number;
+  tableId?: number;
 };
 
 export type TableItemType = {

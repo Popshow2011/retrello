@@ -6,6 +6,7 @@ export const Loader = () => {
       height="200px"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
+      className="absolute top-1/2 left-0 right-0 m-auto"
     >
       <g transform="rotate(0 50 50)">
         <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a0a0a">

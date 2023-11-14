@@ -7,6 +7,9 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 import { Auth, NotFound, Table, CreateTableItem } from '@/pages';
 import { AuthContext } from '@/context';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { ColumnProvider } from './pages/Table/ColumnProvider';
 
 const isAuthenticated = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -42,10 +45,17 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ColumnProvider>
+          <ReactQueryDevtools initialIsOpen={true} />
+          <RouterProvider router={router} />
+        </ColumnProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </StrictMode>,
 );

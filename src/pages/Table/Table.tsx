@@ -1,17 +1,11 @@
 import { Loader, NavBar } from '@/components';
-import { TableItemType, TodoType } from '@/types';
+import { ColumnType, TodoType } from '@/types';
 import { useContext, useEffect, useState } from 'react';
 import { z } from 'zod';
 import { TableItem } from '@/pages';
 import { Outlet } from 'react-router-dom';
 import { get } from '@/helpers/request.tsx';
-import { AuthContext } from '@/context';
-
-const initialTableItem = [
-  { id: 1, name: 'Открыт' },
-  { id: 2, name: 'В работе' },
-  { id: 3, name: 'На проверке' },
-];
+import { AuthContext, ColumnContext } from '@/context';
 
 export const todoSchema = z.object({
   completed: z.boolean(),
@@ -23,7 +17,7 @@ export const todoSchema = z.object({
 export const todosSchema = z.array(todoSchema);
 
 export const Table = () => {
-  const [tableItem, setTableItem] = useState<TableItemType[]>(initialTableItem);
+  const { columns } = useContext(ColumnContext);
   const [todos, setTodos] = useState<TodoType[]>([]);
   const { userName } = useContext(AuthContext);
 
@@ -34,7 +28,7 @@ export const Table = () => {
   const grindingTodos = (todos: TodoType[]) => {
     const newTodos = todos.map((item: TodoType) => {
       if (!item.tableId) {
-        item.tableId = Math.floor(Math.random() * tableItem.length + 1);
+        item.tableId = Math.floor(Math.random() * columns.length + 1);
       }
       return item;
     });
@@ -49,19 +43,15 @@ export const Table = () => {
     }
   };
 
-  // const addColumn = (name: string) => {
-  //   setTableItem([...tableItem, { id: tableItem.length + 1, name }]);
-  // };
-
   return (
     <>
       <div className="bg-amber-500 overflow-hidden w-full h-screen">
         <NavBar userName={userName} />
         <div className="bg-blue w-full font-sans relative">
           <div className="flex px-4 pb-8 items-start bg-blue-300 overflow-x-scroll">
-            {tableItem &&
+            {columns &&
               todos.length &&
-              tableItem.map((item) => (
+              columns.map((item: ColumnType) => (
                 <div key={item.id} className="min-h-min overflow-y-auto max-h-96 overflow-x-hidden">
                   <TableItem tableItem={item} todos={todos.filter((todo) => todo.tableId === item.id)} />
                 </div>

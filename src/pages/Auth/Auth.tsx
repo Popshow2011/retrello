@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '@/context/AuthContext.tsx';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 export const Auth = () => {
   const [text, setText] = useState<string>('');
@@ -55,6 +55,7 @@ export const Auth = () => {
           </div>
         </div>
       </div>
+      <Outlet />
     </>
   );
 };

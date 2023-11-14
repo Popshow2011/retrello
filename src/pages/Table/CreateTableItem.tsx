@@ -1,9 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { ChangeEvent, useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { ChangeEvent, useContext, useState } from 'react';
+import { ColumnContext } from '@/context';
 
 export const CreateTableItem = () => {
   const navigate = useNavigate();
   const [name, setName] = useState<string>('');
+  const { addColumn } = useContext(ColumnContext);
 
   const closeModal = () => {
     return navigate('/');
@@ -11,6 +13,12 @@ export const CreateTableItem = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
+  };
+
+  const addColumnHandle = (name: string) => {
+    addColumn(name.trim());
+    setName('');
+    closeModal();
   };
 
   return (
@@ -37,7 +45,10 @@ export const CreateTableItem = () => {
                   />
                 </div>
 
-                <button className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button
+                  onClick={() => addColumnHandle(name)}
+                  className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
                   Добавить
                 </button>
 
@@ -52,6 +63,7 @@ export const CreateTableItem = () => {
           </div>
         </div>
       </div>
+      <Outlet />
     </>
   );
 };

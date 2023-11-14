@@ -9,7 +9,7 @@ export type TodoType = {
   tableId?: number;
 };
 
-export type TableItemType = {
+export type ColumnType = {
   id: number;
   name: string;
 };

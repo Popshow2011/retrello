@@ -1,8 +1,8 @@
-import { TableItemType, TodoType } from '@/types';
+import { ColumnType, TodoType } from '@/types';
 import { TodoItem } from '@/components';
 
 type ItemProps = {
-  tableItem: TableItemType;
+  tableItem: ColumnType;
   todos: TodoType[] | undefined;
 };
 

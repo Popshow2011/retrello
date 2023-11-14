@@ -10,9 +10,11 @@ export const NavBar = ({ userName }: PropsType) => {
   const { signout } = useContext(AuthContext);
 
   const navigate = useNavigate();
+
   const createNewColumn = () => {
     return navigate('/new_column');
   };
+
   const handleExit = () => {
     signout();
   };

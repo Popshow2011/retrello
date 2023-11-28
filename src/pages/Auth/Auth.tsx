@@ -1,9 +1,9 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react';
-import { AuthContext } from '@/context/AuthContext.tsx';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { AuthContext } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export const Auth = () => {
-  const [text, setText] = useState<string>('');
+  const [text, setText] = useState('');
   const { authenticate, isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const get = async (url: string) => {
-  return await axios.get(url);
+export const get = (url: string) => {
+  return axios.get(url);
 };

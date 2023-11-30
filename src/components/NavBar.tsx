@@ -1,6 +1,24 @@
-import { UserType } from '@/types';
+import { useContext } from 'react';
+import { AuthContext } from '@/context';
+import { useNavigate } from 'react-router-dom';
 
-export const NavBar = ({ userName }: UserType) => {
+type PropsType = {
+  userName: string;
+};
+
+export const NavBar = ({ userName }: PropsType) => {
+  const { signout } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const createNewColumn = () => {
+    return navigate('/new_column');
+  };
+
+  const handleExit = () => {
+    signout();
+  };
+
   return (
     <nav className="backdrop-brightness-75">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

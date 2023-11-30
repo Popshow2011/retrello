@@ -1,11 +1,12 @@
-import { Loader, NavBar } from '@/components';
+import { NavBar } from '@/components';
+import loader from '@/static/images/loader.svg';
 import { ColumnType, TodoType } from '@/types';
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { z } from 'zod';
-import { TableItem } from '@/pages';
 import { Outlet } from 'react-router-dom';
 import { get } from '@/helpers/request.tsx';
 import { AuthContext, ColumnContext } from '@/context';
+import { TableItem } from '@/pages/Table/TableItem';
 
 export const todoSchema = z.object({
   completed: z.boolean(),
@@ -25,15 +26,18 @@ export const Table = () => {
     getTodos();
   }, []);
 
-  const grindingTodos = (todos: TodoType[]) => {
-    const newTodos = todos.map((item: TodoType) => {
-      if (!item.tableId) {
-        item.tableId = Math.floor(Math.random() * columns.length + 1);
-      }
-      return item;
-    });
-    setTodos(newTodos);
-  };
+  const grindingTodos = useCallback(
+    (todos: TodoType[]) => {
+      const newTodos = todos.map((item: TodoType) => {
+        if (!item.tableId) {
+          return { ...item, tableId: Math.floor(Math.random() * columns.length + 1) };
+        }
+        return { ...item };
+      });
+      setTodos(newTodos);
+    },
+    [setTodos],
+  );
 
   const getTodos = async () => {
     const { data } = await get('https://jsonplaceholder.typicode.com/todos');
@@ -42,6 +46,10 @@ export const Table = () => {
       grindingTodos(data);
     }
   };
+
+  // const addColumn = (name: string) => {
+  //   setTableItem([...tableItem, { id: tableItem.length + 1, name }]);
+  // };
 
   return (
     <>
@@ -56,7 +64,7 @@ export const Table = () => {
                   <TableItem tableItem={item} todos={todos.filter((todo) => todo.tableId === item.id)} />
                 </div>
               ))}
-            {!todos.length && <Loader />}
+            {!todos.length && <img className="absolute top-1/2 left-0 right-0 m-auto" srcSet={loader} alt="loader" />}
           </div>
         </div>
       </div>

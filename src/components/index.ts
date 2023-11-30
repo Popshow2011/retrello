@@ -1,3 +1,2 @@
-export { NavBar } from './NavBar.tsx';
-export { TodoItem } from './TodoItem.tsx';
-export { Loader } from './Loader.tsx';
+export * from './NavBar';
+export * from './TodoItem';

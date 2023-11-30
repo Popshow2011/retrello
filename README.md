@@ -1,0 +1,101 @@
+# План обучения (изучение)
+
+- [ ] База
+  - [x] Понимание spa, сеть
+  - [x] Стандарты es, poly l
+  - [x] Парадигмы
+  - [x] Solid, oop, dry, kiss
+  - [ ] Оценка сложности алгоритмов
+- [x] Js
+  - [x] Работа с дом
+  - [x] es6+
+  - [x] JSX
+  - [x] Работа с массивами
+  - [x] асинхронность
+  - [x] Промисы - async/await
+  - [x] Callback
+- [ ] TS
+  - [x] Типы
+  - [x] Чем отличается
+  - [x] Зачем нужен
+- [x] React
+  - [x] Зачем нужен, как работает
+- [ ] сборщики
+- [ ] npm
+  ## Материалы
+- [ ] https://learn.javascript.ru/ и https://doka.guide/
+- [ ] Изучить собеседования
+- [ ] Ts
+  - [ ] https://www.typescriptlang.org/docs/handbook/
+  - [ ] https://www.typescriptlang.org/docs/handbook/react.html
+  - [ ] https://reactdev.ru/types/
+  - [ ] Что изучить
+    - [ ] Типы/Интерфейсы
+    - [ ] Модификаторы типов
+    - [ ] Generic
+- [ ] Прочитать про SOLID
+  - [ ] https://www.youtube.com/watch?v=TxZwqVTaCmA
+- [ ] Реакт
+  - [ ] https://react.dev/learn
+  - [ ] JSX
+  - [ ] Компоненты
+  - [ ] Пропсы
+  - [ ] Состояние
+  - [ ] Хуки
+  - [ ] Контекст
+  - [ ] Оптимизация (мемоизация)
+  - [ ] React-dev-tools
+  - [ ] Стили
+  - [ ] Анимации ( не css )
+ ## Тестовое задание
+ ## Собрать приложение, аналог трелло
+- [ ] Собрать react проект на vite с tailwind, подключить линтеры
+  - [ ] https://vitejs.dev/
+  - [ ] https://tailwindcss.com/
+  - [ ] Linter https://eslint.org/docs/latest/
+  - [ ] плагины tw, react, etc
+  - [x] Подключить ts к проекту
+  - [x] https://www.typescriptlang.org/docs/handbook/react.html
+  - [x] https://reactdev.ru/types
+  - [x] React router
+  - [x] https://www.npmjs.com/package/react-router-dom
+  - [ ] Добавить страницы - создание новой, список всех, модалка просмотра 1 с отдельным
+  роутом
+  - [ ] Ходить за какой-нибудь апишкой todo-list с использованием react-query
+  - [ ] https://tanstack.com/query/v3/docs/react/overview
+  - [x] опционально, но желательно, axios
+  - [ ] https://www.geeksforgeeks.org/di erence-between-fetch-and-axios-js-for-making-http-
+  requests/
+  - [ ] https://blog.logrocket.com/axios-vs-fetch-best-http-requests/
+  - [ ] https://axios-http.com/ru/docs/intro
+- [x] Открытые апи
+  - [x] https://jsonplaceholder.typicode.com/
+  - [ ] https://apptractor.ru/all-api/10-rest-api.html
+  - [ ] https://pokeapi.co/
+- [x] Валидация ответа апи по схеме zod
+  - [x] https://zod.dev/
+- [ ] Подключить ui-kit наш
+  - [ ] https://uikit.dev.air.inno.tech/?path=/docs/airuiaccordion--docs
+  - [ ] Локально прилинковать
+- [ ] Добавить storybook для хотя бы 1 компонента
+  - [ ] https://storybook.js.org/
+- [ ] Прочитать про SOLID, другие паттерны ( oop, dry, kiss …)
+  - [ ] https://www.youtube.com/watch?v=TxZwqVTaCmA
+- [ ] Добавить форму react-hook-form/ nal-form, валидировать ее через zod
+  - [ ] https://react-hook-form.com/
+  - [ ] https:// nal-form.org/react
+  - [ ] Zod resolver
+    - [ ] https://www.npmjs.com/package/@hookform/resolvers
+
+# План разработки (проект)
+- [X] Развернуть проект
+- [X] Добавить talilwindcss
+- [X] Добавить и настроить роутер (React-router)
+- [X] Добавить axios
+- [X] Получение данных по тудушкам из jsonplaceholder
+- [X] Валидация полученных данных по схеме через ZOD
+- [ ] Добавление и настройка хранилища Rect-query
+- [ ] Открытие в попапе тудушки по роуту
+- [ ] Создание тудушки на отдельной странице
+- [ ] Прикрутить к созданию react-hook-form (изучение)
+- [ ] добавить сторибук и описать инпут

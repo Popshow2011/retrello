@@ -1,2 +1,2 @@
-export { AuthContext } from './AuthContext.tsx';
-export { ColumnContext } from './ColumnContext.tsx';
+export * from './AuthContext';
+export * from './ColumnContext';

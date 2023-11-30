@@ -1,3 +1,3 @@
-export { Table } from './Table';
-export { TableItem } from './TableItem.tsx';
-export { CreateTableItem } from './CreateTableItem.tsx';
+export * from './Table';
+export * from './TableItem';
+export * from './CreateTableItem';

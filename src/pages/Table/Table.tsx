@@ -1,4 +1,5 @@
-import { Loader, NavBar } from '@/components';
+import { NavBar } from '@/components';
+import loader from '@/static/images/loader.svg';
 import { TableItemType, TodoType } from '@/types';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { z } from 'zod';
@@ -37,7 +38,7 @@ export const Table = () => {
         if (!item.tableId) {
           return { ...item, tableId: Math.floor(Math.random() * tableItem.length + 1) };
         }
-        return item;
+        return { ...item };
       });
       setTodos(newTodos);
     },
@@ -69,7 +70,7 @@ export const Table = () => {
                   <TableItem tableItem={item} todos={todos.filter((todo) => todo.tableId === item.id)} />
                 </div>
               ))}
-            {!todos.length && <Loader />}
+            {!todos.length && <img className="absolute top-1/2 left-0 right-0 m-auto" srcSet={loader} alt="loader" />}
           </div>
         </div>
       </div>

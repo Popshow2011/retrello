@@ -1,12 +1,13 @@
 import { NavBar } from '@/components';
+import { z } from 'zod';
 import loader from '@/static/images/loader.svg';
 import { ColumnType, TodoType } from '@/types';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { z } from 'zod';
 import { Outlet } from 'react-router-dom';
 import { get } from '@/helpers/request.tsx';
 import { AuthContext, ColumnContext } from '@/context';
 import { TableItem } from '@/pages/Table/TableItem';
+import { useQuery } from 'react-query';
 
 export const todoSchema = z.object({
   completed: z.boolean(),
@@ -22,34 +23,30 @@ export const Table = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
   const { userName } = useContext(AuthContext);
 
-  useEffect(() => {
-    getTodos();
+  const grindingTodos = useCallback((todos: TodoType[]) => {
+    return todos.map((item: TodoType) => {
+      if (!item.tableId) {
+        return { ...item, tableId: Math.floor(Math.random() * columns.length + 1) };
+      }
+      return { ...item };
+    });
   }, []);
-
-  const grindingTodos = useCallback(
-    (todos: TodoType[]) => {
-      const newTodos = todos.map((item: TodoType) => {
-        if (!item.tableId) {
-          return { ...item, tableId: Math.floor(Math.random() * columns.length + 1) };
-        }
-        return { ...item };
-      });
-      setTodos(newTodos);
-    },
-    [setTodos],
-  );
 
   const getTodos = async () => {
     const { data } = await get('https://jsonplaceholder.typicode.com/todos');
     const { success } = todosSchema.safeParse(data);
     if (success) {
-      grindingTodos(data);
+      return grindingTodos(data);
+    } else {
+      return [];
     }
   };
+  const { data, isLoading } = useQuery<TodoType[]>('todos', getTodos);
 
-  // const addColumn = (name: string) => {
-  //   setTableItem([...tableItem, { id: tableItem.length + 1, name }]);
-  // };
+  useEffect(() => {
+    if (!data) return;
+    setTodos(data);
+  }, [data]);
 
   return (
     <>
@@ -64,7 +61,7 @@ export const Table = () => {
                   <TableItem tableItem={item} todos={todos.filter((todo) => todo.tableId === item.id)} />
                 </div>
               ))}
-            {!todos.length && <img className="absolute top-1/2 left-0 right-0 m-auto" srcSet={loader} alt="loader" />}
+            {isLoading && <img className="absolute top-1/2 left-0 right-0 m-auto" srcSet={loader} alt="loader" />}
           </div>
         </div>
       </div>

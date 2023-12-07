@@ -20,6 +20,7 @@ export const Auth = () => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(setText(event.currentTarget.value));
     setText(event.target.value);
   };
 

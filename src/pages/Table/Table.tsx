@@ -50,10 +50,10 @@ export const Table = () => {
 
   return (
     <>
-      <div className="bg-amber-500 overflow-hidden w-full h-screen">
+      <div className="bg-gray-700 overflow-hidden w-full h-screen">
         <NavBar userName={userName} />
-        <div className="bg-blue w-full font-sans relative">
-          <div className="flex px-4 pb-8 items-start bg-blue-300 overflow-x-scroll">
+        <div className="bg-gray-500 w-full font-sans relative">
+          <div className="flex px-4 pb-8 items-start bg-gray-400 overflow-x-scroll">
             {columns &&
               todos.length &&
               columns.map((item: ColumnType) => (

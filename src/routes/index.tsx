@@ -1,4 +1,4 @@
-import { Auth, NotFound, Table } from '@/pages';
+import { Auth, NewTodo, NotFound, Table, EditTodo } from '@/pages';
 import { AuthContext } from '@/context';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { FC, ReactNode, useContext } from 'react';
@@ -16,6 +16,8 @@ enum Routes {
   ROOT = '/',
   ALL = '*',
   AUTH = '/auth',
+  NEW_TODO = '/new_todo',
+  EDIT_TODO = '/edit_todo/:id',
 }
 
 export const router = createBrowserRouter([
@@ -26,6 +28,16 @@ export const router = createBrowserRouter([
         <Table />
       </PrivateRoute>
     ),
+    children: [
+      {
+        path: Routes.NEW_TODO,
+        element: <NewTodo />,
+      },
+      {
+        path: Routes.EDIT_TODO,
+        element: <EditTodo />,
+      },
+    ],
   },
   {
     path: Routes.ALL,
